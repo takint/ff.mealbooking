@@ -1,0 +1,36 @@
+﻿@using ff.mealbooking.app.ViewModels;
+@model IList<DemandOrderViewModel>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Người đặt</td>
+                    <td>Món</td>
+                    <td>Số lượng</td>
+                    <td>Ghi chú</td>
+                    <td>Giá tiền</td>
+                    <td>Phải trả</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                <tr>
+                    <td>@Html.Raw(order.CustomerName)</td>
+                    <td>@Html.Raw(order.DishName)</td>
+                    <td>@Html.Raw(order.Quantity)</td>
+                    <td>@Html.Raw(order.Notes)</td>
+                    <td>@Html.Raw(order.Price.ToString("#0"))</td>
+                    <td>@Html.Raw(order.Cost.ToString("#0"))</td>
+                </tr>
+                }
+                <tr>
+                    <td colspan="5"><strong>Tổng cộng</strong></td>
+                    <td>@Html.Raw(Model.Sum(m => m.Cost).ToString("#0"))</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

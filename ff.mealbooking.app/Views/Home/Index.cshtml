@@ -1,0 +1,33 @@
+﻿@using ff.mealbooking.app.ViewModels;
+@model DemandOrderViewModel
+
+<form id="BookMealForm" asp-controller="Home" asp-action="BookMeal" method="post">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label><span class="text-danger">*</span>
+                <input id="CustomerName" asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DishName" class="control-label"></label><span class="text-danger">*</span>
+                <input id="DishName" asp-for="DishName" class="form-control" />
+                <span asp-validation-for="DishName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input id="Quantity" asp-for="Quantity" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input id="Price" asp-for="Price" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input id="Notes" asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Đặt" />
+        </div>
+    </div>
+</form>
