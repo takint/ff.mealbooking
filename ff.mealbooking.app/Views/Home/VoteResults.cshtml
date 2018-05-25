@@ -1,0 +1,32 @@
+﻿@using ff.mealbooking.app.Data.DataModels;
+@model List<IGrouping<string, MealVote>>;
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Tên quán or Link</td>
+                    <td>Số lượng votes</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{int total = 0;}
+                @foreach (var vote in Model)
+                {
+                <tr>
+                    <td>@Html.Raw(vote.Key)</td>
+                    <td>@Html.Raw(vote.Count())</td>
+                    @{
+                        total += vote.Count();
+                    }
+                </tr>
+                }
+                <tr>
+                    <td><strong>Số lượng votes</strong></td>
+                    <td>@Html.Raw(total)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

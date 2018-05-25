@@ -7,6 +7,8 @@ namespace ff.mealbooking.app.Data
     {
         public DbSet<DemandOrder> DemandOrders { get; set; }
 
+        public DbSet<MealVote> MealVotes { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=MealBookingDb;User ID=sa;Password=123;Persist Security Info=True;MultipleActiveResultSets=True");

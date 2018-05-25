@@ -27,6 +27,30 @@ namespace ff.mealbooking.app.Controllers
             return View(vm);
         }
 
+        public IActionResult MealVoting()
+        {
+            MealVoteViewModel vm = new MealVoteViewModel();
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MealVoting(MealVoteViewModel viewModel)
+        {
+            MealVoteViewModel vm = new MealVoteViewModel();
+
+            if (ModelState.IsValid)
+            {
+                MealVote model = Mapper.Map<MealVote>(viewModel);
+
+                await _dbContext.AddAsync(model);
+                await _dbContext.SaveChangesAsync();
+
+                return RedirectToActionPermanent("VoteResults");
+            }
+
+            return View(viewModel);
+        }
+
         [HttpPost]
         public async Task<IActionResult> BookMeal(DemandOrderViewModel viewModel)
         {
@@ -45,6 +69,12 @@ namespace ff.mealbooking.app.Controllers
             }
 
             return View("Index", viewModel);
+        }
+
+        public async Task<IActionResult> VoteResults()
+        {
+            List<IGrouping<string, MealVote>> model = await _dbContext.MealVotes.GroupBy(m => m.VendorName).ToListAsync();
+            return View(model);
         }
 
 

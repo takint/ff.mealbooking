@@ -1,0 +1,20 @@
+﻿@using ff.mealbooking.app.ViewModels;
+@model MealVoteViewModel
+
+<form id="MealVoteForm" asp-controller="Home" asp-action="MealVoting" method="post">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label><span class="text-danger">*</span>
+                <input id="CustomerName" asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VendorName" class="control-label"></label><span class="text-danger">*</span>
+                <input id="DishName" asp-for="VendorName" class="form-control" />
+                <span asp-validation-for="VendorName" class="text-danger"></span>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Votes" />
+        </div>
+    </div>
+</form>

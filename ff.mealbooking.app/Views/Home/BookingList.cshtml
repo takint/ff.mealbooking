@@ -6,12 +6,12 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td>Người đặt</td>
-                    <td>Món</td>
-                    <td>Số lượng</td>
-                    <td>Ghi chú</td>
-                    <td>Giá tiền</td>
-                    <td>Phải trả</td>
+                    <td><strong>Người đặt</strong></td>
+                    <td><strong>Món</strong></td>
+                    <td><strong>Số lượng</strong></td>
+                    <td><strong>Ghi chú</strong></td>
+                    <td><strong>Giá tiền</strong></td>
+                    <td><strong>Phải trả</strong></td>
                 </tr>
             </thead>
             <tbody>
@@ -22,13 +22,13 @@
                     <td>@Html.Raw(order.DishName)</td>
                     <td>@Html.Raw(order.Quantity)</td>
                     <td>@Html.Raw(order.Notes)</td>
-                    <td>@Html.Raw(order.Price.ToString("#0"))</td>
-                    <td>@Html.Raw(order.Cost.ToString("#0"))</td>
+                    <td>@Html.Raw(order.Price.ToString("##,# đ"))</td>
+                    <td>@Html.Raw(order.Cost.ToString("##,# đ"))</td>
                 </tr>
                 }
                 <tr>
                     <td colspan="5"><strong>Tổng cộng</strong></td>
-                    <td>@Html.Raw(Model.Sum(m => m.Cost).ToString("#0"))</td>
+                    <td>@Html.Raw(Model.Sum(m => m.Cost).ToString("##,# đ"))</td>
                 </tr>
             </tbody>
         </table>
