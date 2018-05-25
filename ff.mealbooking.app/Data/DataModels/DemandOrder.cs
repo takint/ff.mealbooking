@@ -3,11 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ff.mealbooking.app.Data.DataModels
 {
-    public class DemandOrder
+    public class DemandOrder : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         [MaxLength(512)]
         public string VendorName { get; set; }
 
@@ -25,9 +22,5 @@ namespace ff.mealbooking.app.Data.DataModels
         public decimal Price { get; set; }
 
         public decimal Cost { get; set; }
-
-        public DateTime CreateDate { get; set; }
-
-        public DateTime UpdateDate { get; set; }
     }
 }

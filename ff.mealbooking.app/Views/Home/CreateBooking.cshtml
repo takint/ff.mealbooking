@@ -1,0 +1,15 @@
+﻿@using ff.mealbooking.app.ViewModels;
+@model IList<VendorViewModel>;
+
+@foreach (var vendor in Model)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <a target="_blank" href="@vendor.LinkUrl">@vendor.Name</a>
+            <strong class="text-danger">@vendor.Discount</strong>
+            <button class="btn btn-primary">Votes</button>
+            <iframe src="@vendor.LinkUrl" width="1000" height="400"></iframe>
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+}

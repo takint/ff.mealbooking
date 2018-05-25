@@ -33,6 +33,12 @@ namespace ff.mealbooking.app.Controllers
             return View(vm);
         }
 
+        public async Task<IActionResult> CreateBooking()
+        {
+            var vendors = await _dbContext.Vendors.ToListAsync();
+            return View(Mapper.Map<List<VendorViewModel>>(vendors));
+        }
+
         [HttpPost]
         public async Task<IActionResult> MealVoting(MealVoteViewModel viewModel)
         {
