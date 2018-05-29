@@ -46,12 +46,15 @@ namespace ff.mealbooking.app.Controllers
 
             if (ModelState.IsValid)
             {
+                viewModel.CreateDate = DateTime.Now;
+                viewModel.UpdateDate = DateTime.Now;
+
                 MealVote model = Mapper.Map<MealVote>(viewModel);
 
                 await _dbContext.AddAsync(model);
                 await _dbContext.SaveChangesAsync();
 
-                return RedirectToActionPermanent("VoteResults");
+                return RedirectToActionPermanent("SalesList");
             }
 
             return View(viewModel);
@@ -88,6 +91,17 @@ namespace ff.mealbooking.app.Controllers
         {
             var model = await _dbContext.DemandOrders.Where(m => m.CreateDate.Day.Equals(DateTime.Now.Day)).ToListAsync();
             return View(Mapper.Map<List<DemandOrderViewModel>>(model));
+        }
+
+        public async Task<IActionResult> SalesList()
+        {
+            List<MealVote> model = await _dbContext.MealVotes.Where(m => m.CreateDate.Day.Equals(DateTime.Now.Day)).ToListAsync();
+            return View(model);
+        }
+
+        public IActionResult HotSales()
+        {
+            return View();
         }
 
         public IActionResult About()

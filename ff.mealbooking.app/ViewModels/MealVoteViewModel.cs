@@ -8,7 +8,7 @@ namespace ff.mealbooking.app.ViewModels
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Quán or Link")]
+        [Display(Name = "Số lượng và ghi chú")]
         public string VendorName { get; set; }
 
         [Display(Name = "Người đặt")]

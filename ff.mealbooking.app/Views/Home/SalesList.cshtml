@@ -1,0 +1,24 @@
+﻿@using ff.mealbooking.app.Data.DataModels;
+@model IList<MealVote>;
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Người đặt</td>
+                    <td>Số lượng hoặc ghi chú</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vote in Model)
+                {
+                <tr>
+                    <td>@Html.Raw(vote.CustomerName)</td>
+                    <td>@Html.Raw(vote.VendorName)</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
