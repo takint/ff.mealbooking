@@ -30,6 +30,9 @@ namespace ff.mealbooking.app
             {
                 cfg.CreateMap<DemandOrder, DemandOrderViewModel>();
                 cfg.CreateMap<DemandOrderViewModel, DemandOrder>();
+
+                cfg.CreateMap<Betting, BettingViewModel>();
+                cfg.CreateMap<BettingViewModel, Betting>();
             });
         }
 
@@ -52,7 +55,7 @@ namespace ff.mealbooking.app
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Entertain}/{action=Index}/{id?}");
             });
         }
     }

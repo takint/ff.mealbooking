@@ -11,9 +11,10 @@ using System;
 namespace ff.mealbooking.app.Migrations
 {
     [DbContext(typeof(MealBookingDbContext))]
-    partial class MealBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180614042648_AddBetting")]
+    partial class AddBetting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180525024326_UpdateVoting.cs" />
     <Compile Remove="Migrations\20180525024326_UpdateVoting.Designer.cs" />
+    <Compile Remove="Migrations\20180614042603_AddBetting.cs" />
+    <Compile Remove="Migrations\20180614042603_AddBetting.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\worldcup\" />
   </ItemGroup>
 
 </Project>

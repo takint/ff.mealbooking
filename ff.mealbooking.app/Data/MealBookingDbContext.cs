@@ -11,6 +11,8 @@ namespace ff.mealbooking.app.Data
 
         public DbSet<Vendor> Vendors { get; set; }
 
+        public DbSet<Betting> Bettings { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=MealBookingDb;User ID=sa;Password=123;Persist Security Info=True;MultipleActiveResultSets=True");

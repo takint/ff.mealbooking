@@ -1,0 +1,82 @@
+﻿@using ff.mealbooking.app.ViewModels;
+@model IList<BettingViewModel>
+<div class="row" id="betInfo">
+  <div class="col-sm-12">
+    <form id="BettingForm" method="post" class="text-center">
+      <input type="hidden" value="false" name="TeamWin" />
+      <input type="hidden" value="Russia - Saudi Abraria (Open match)" name="Match" />
+      <div class="row">
+        <div class="col-sm-8 form-group">
+          <label>Tên người đặt</label>
+          <input required name="CustomerName" type="text" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label for="team">Gấu Nga</label>
+          <input value="Gấu Nga" checked required name="TeamName" type="radio" />
+        </div>
+        <div class="col-sm-6 form-group">
+          <label>Saudi Abraria</label>
+          <input required value="Saudi Abraria" name="TeamName" type="radio" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">Đặt kèo</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="text-center">
+        <img src="https://res.cloudinary.com/ff-team/image/upload/v1528951567/bookingmeals/worldcup/match1.png">
+      </p>
+    </div>
+  </div>
+  <div class="row" id="betList">
+    <div class="col-sm-12">
+      <table id="BetResult" class="table table-striped text-center">
+        <thead>
+          <tr>
+            <td><strong>Người tham gia</strong></td>
+            <td><strong>Đội đã chọn</strong></td>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var bet in Model)
+          {
+              <tr>
+                <td>@bet.CustomerName</td>
+                <td>@bet.TeamName</td>
+              </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+@section Scripts{
+  <script type="text/javascript">
+    $("#BettingForm").submit(function (e) {
+
+      let url = '@Url.Action("BetRegister")';
+
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: $("#BettingForm").serialize(),
+        success: function (result) {
+          if (result) {
+            $("#BetResult tbody").append(`<tr><td>${result.customerName}</td><td>${result.teamName}</td></tr>`);
+            $("#BettingForm").fadeOut();
+            $(document).scroll("#betList");
+          }
+        }
+      });
+      e.preventDefault();
+    });
+  </script>
+}
